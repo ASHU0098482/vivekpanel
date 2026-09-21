@@ -1,4 +1,4 @@
-package com.ashu;
+package com.vivek;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

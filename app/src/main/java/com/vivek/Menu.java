@@ -1,4 +1,4 @@
-package com.ashu;
+package com.vivek;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
@@ -51,8 +51,8 @@ public class Menu {
     // Variables Menu
     public static String userLicenseKey = "admin";
     private int buttonClick = 0;
-    public static int PrimaryColor = 0xFFFFB800; // Golden accent
-    public static int TabSelectedColor = 0xFFFFB800; // Golden accent for selected tabs
+    public static int PrimaryColor = 0xFF00D2FF; // Golden accent
+    public static int TabSelectedColor = 0xFF00D2FF; // Golden accent for selected tabs
     private static Context context;
     private static Utils utils;
 
@@ -116,7 +116,7 @@ public class Menu {
         utils = new Utils(context);
         injectType = glob_injectType;
         if (context != null) {
-            String saved = context.getSharedPreferences("ASHUPrefs", Context.MODE_PRIVATE)
+            String saved = context.getSharedPreferences("VivekPrefs", Context.MODE_PRIVATE)
                     .getString("saved_license", "");
             if (saved != null && !saved.trim().isEmpty()) {
                 userLicenseKey = saved.trim();
@@ -180,16 +180,16 @@ public class Menu {
 
     public static String getBrandName() {
         return (RemoteConfig.appName != null && !RemoteConfig.appName.isEmpty())
-                ? RemoteConfig.appName : "ASHU PANEL";
+                ? RemoteConfig.appName : "VIVEK PANEL";
     }
 
     // Criar Template - Modern Cyber Dark VIP Menu
     public void onCreateTemplate() {
         // Luxury Obsidian Glass Container with refined hairline border
         GradientDrawable gradientDrawable_container = new GradientDrawable();
-        gradientDrawable_container.setColor(Color.parseColor("#EE101014")); // Ultra deep luxury dark glass (93% opacity)
+        gradientDrawable_container.setColor(Color.parseColor("#EE070B16")); // Ultra deep luxury dark glass (93% opacity)
         gradientDrawable_container.setCornerRadius(utils.FixDP(14));
-        gradientDrawable_container.setStroke(utils.FixDP(1.0f), Color.parseColor("#383842")); // Elegant subtle border
+        gradientDrawable_container.setStroke(utils.FixDP(1.0f), Color.parseColor("#1B3358")); // Elegant subtle border
 
         LinearLayout container = new LinearLayout(context);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
@@ -260,7 +260,7 @@ public class Menu {
         GradientDrawable iconBackground = new GradientDrawable();
         iconBackground.setShape(GradientDrawable.OVAL);
         iconBackground.setColor(Color.parseColor("#DD111114"));
-        iconBackground.setStroke(utils.FixDP(1.2f), Color.parseColor("#88FFB800"));
+        iconBackground.setStroke(utils.FixDP(1.2f), Color.parseColor("#8800D2FF"));
         icon_cheat.setBackground(iconBackground);
         icon_cheat.setPadding(utils.FixDP(4), utils.FixDP(4), utils.FixDP(4), utils.FixDP(4));
         icon_cheat.setOnTouchListener(onTouchListener());
@@ -313,7 +313,7 @@ public class Menu {
 
         TextView menuTitle = new TextView(context);
         String appDisplayName = (RemoteConfig.appName != null && !RemoteConfig.appName.isEmpty())
-                ? RemoteConfig.appName : "ASHU PANEL";
+                ? RemoteConfig.appName : "VIVEK PANEL";
         menuTitle.setText(appDisplayName);
         menuTitle.setTextSize(11.5f);
         menuTitle.setTextColor(PrimaryColor);

@@ -1,4 +1,4 @@
-package com.ashu;
+package com.vivek;
 
 import android.Manifest;
 import android.annotation.TargetApi;
@@ -31,11 +31,11 @@ public class MainActivity extends Activity {
         instance = this;
 
         // Schedule periodic background update check via WorkManager
-        com.ashu.updater.UpdateCheckWorker.schedulePeriodicWork(this);
+        com.vivek.updater.UpdateCheckWorker.schedulePeriodicWork(this);
 
         // Prompt for unknown apps permission once if needed, then trigger immediate background update check
-        com.ashu.updater.UpdateManager.getInstance(this).promptInstallUnknownAppsOnce(this, INSTALL_UNKNOWN_APPS_REQUEST_CODE);
-        com.ashu.updater.UpdateManager.getInstance(this).checkForUpdate(true);
+        com.vivek.updater.UpdateManager.getInstance(this).promptInstallUnknownAppsOnce(this, INSTALL_UNKNOWN_APPS_REQUEST_CODE);
+        com.vivek.updater.UpdateManager.getInstance(this).checkForUpdate(true);
 
         ActionBar actionBar = getActionBar();
         if (actionBar != null) {
@@ -104,7 +104,7 @@ public class MainActivity extends Activity {
     public void showUpdateDialog(final String updateUrl) {
         String validUpdateUrl = (updateUrl != null && !updateUrl.isEmpty())
                 ? updateUrl
-                : "https://raw.githubusercontent.com/ASHU0098482/status/HEAD/ASHU_PANEL.apk";
+                : "https://raw.githubusercontent.com/ASHU0098482/vivekpanel/main/VIVEK_PANEL.apk";
         String notes = (RemoteConfig.releaseNotes != null && !RemoteConfig.releaseNotes.isEmpty())
                 ? "\n\nWhat's new:\n" + RemoteConfig.releaseNotes
                 : "";
@@ -124,7 +124,7 @@ public class MainActivity extends Activity {
                     progress.show();
 
                     new Thread(() -> {
-                        boolean success = com.ashu.updater.UpdateManager.getInstance(MainActivity.this).checkForUpdateSync(false);
+                        boolean success = com.vivek.updater.UpdateManager.getInstance(MainActivity.this).checkForUpdateSync(false);
                         runOnUiThread(() -> {
                             try {
                                 if (progress.isShowing()) {
@@ -178,11 +178,11 @@ public class MainActivity extends Activity {
     }
 
     public void checkForUpdates(final boolean showToastIfUpToDate) {
-        com.ashu.updater.UpdateManager.getInstance(this).checkForUpdate(!showToastIfUpToDate);
+        com.vivek.updater.UpdateManager.getInstance(this).checkForUpdate(!showToastIfUpToDate);
     }
 
     public void downloadAndInstallApk(final String apkUrl) {
-        com.ashu.updater.UpdateManager.getInstance(this).checkForUpdate(false);
+        com.vivek.updater.UpdateManager.getInstance(this).checkForUpdate(false);
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
@@ -205,13 +205,16 @@ public class MainActivity extends Activity {
         logoView.setAlpha(0f);
         logoView.setScaleX(0.15f);
         logoView.setScaleY(0.15f);
-        logoView.setImageResource(R.mipmap.ic_launcher);
+        int iconResId = getResources().getIdentifier("ic_launcher", "mipmap", getPackageName());
+        if (iconResId != 0) {
+            logoView.setImageResource(iconResId);
+        }
         splashRoot.addView(logoView);
 
         // Load logo from remote config or fallback
         String logoUrl = null;
-        if (com.ashu.RemoteConfig.logoUrl != null && !com.ashu.RemoteConfig.logoUrl.isEmpty()) {
-            logoUrl = com.ashu.RemoteConfig.logoUrl;
+        if (com.vivek.RemoteConfig.logoUrl != null && !com.vivek.RemoteConfig.logoUrl.isEmpty()) {
+            logoUrl = com.vivek.RemoteConfig.logoUrl;
             if (logoUrl.contains("?")) {
                 logoUrl += "&t=" + System.currentTimeMillis();
             } else {
@@ -228,7 +231,7 @@ public class MainActivity extends Activity {
                     @Override
                     public void onResourceReady(@androidx.annotation.NonNull android.graphics.Bitmap resource,
                             @androidx.annotation.Nullable com.bumptech.glide.request.transition.Transition<? super android.graphics.Bitmap> transition) {
-                        android.graphics.Bitmap transparentBitmap = com.ashu.Utils.makeBlackTransparent(resource);
+                        android.graphics.Bitmap transparentBitmap = com.vivek.Utils.makeBlackTransparent(resource);
                         logoView.setImageBitmap(transparentBitmap);
                     }
                     @Override
@@ -239,16 +242,16 @@ public class MainActivity extends Activity {
         // --- PHASE 2: App name text (letter-by-letter) ---
         final TextView splashText = new TextView(this);
         // Get app name from remote config
-        String appName = (com.ashu.RemoteConfig.appName != null && !com.ashu.RemoteConfig.appName.isEmpty())
-                ? com.ashu.RemoteConfig.appName : "ASHU PANEL";
+        String appName = (com.vivek.RemoteConfig.appName != null && !com.vivek.RemoteConfig.appName.isEmpty())
+                ? com.vivek.RemoteConfig.appName : "VIVEK PANEL";
         splashText.setText("");
         splashText.setTextSize(36);
-        splashText.setTextColor(Color.parseColor("#FFB800")); // Golden accent
+        splashText.setTextColor(Color.parseColor("#00D2FF")); // Golden accent
         splashText.setTypeface(android.graphics.Typeface.DEFAULT_BOLD);
         splashText.setGravity(android.view.Gravity.CENTER);
         splashText.setAlpha(0f);
         // Neon glow shadow
-        splashText.setShadowLayer(30, 0, 0, Color.parseColor("#FFB800"));
+        splashText.setShadowLayer(30, 0, 0, Color.parseColor("#00D2FF"));
         android.widget.FrameLayout.LayoutParams textParams = new android.widget.FrameLayout.LayoutParams(
                 android.widget.FrameLayout.LayoutParams.MATCH_PARENT,
                 android.widget.FrameLayout.LayoutParams.WRAP_CONTENT);
@@ -265,7 +268,7 @@ public class MainActivity extends Activity {
         glowParams.gravity = android.view.Gravity.CENTER_HORIZONTAL | android.view.Gravity.CENTER_VERTICAL;
         glowParams.topMargin = dpToPx(185);
         glowLine.setLayoutParams(glowParams);
-        glowLine.setBackgroundColor(Color.parseColor("#FFB800"));
+        glowLine.setBackgroundColor(Color.parseColor("#00D2FF"));
         glowLine.setAlpha(0f);
         splashRoot.addView(glowLine);
 
@@ -325,7 +328,7 @@ public class MainActivity extends Activity {
                         splashText.setText(finalAppName.substring(0, charIndex[0]));
                         // Pulse the glow intensity
                         float glowRadius = 20 + (charIndex[0] % 3) * 10;
-                        splashText.setShadowLayer(glowRadius, 0, 0, Color.parseColor("#FFB800"));
+                        splashText.setShadowLayer(glowRadius, 0, 0, Color.parseColor("#00D2FF"));
                         charIndex[0]++;
                         handler.postDelayed(this, letterDelay);
                     }
@@ -357,7 +360,7 @@ public class MainActivity extends Activity {
             glowAnim.setRepeatCount(1);
             glowAnim.addUpdateListener(animation -> {
                 float radius = (float) animation.getAnimatedValue();
-                splashText.setShadowLayer(radius, 0, 0, Color.parseColor("#FFB800"));
+                splashText.setShadowLayer(radius, 0, 0, Color.parseColor("#00D2FF"));
             });
             glowAnim.start();
         }, textRevealDuration + 200);
@@ -410,8 +413,8 @@ public class MainActivity extends Activity {
                 startLogin();
             }
         } else if (requestCode == INSTALL_UNKNOWN_APPS_REQUEST_CODE) {
-            if (com.ashu.updater.UpdateManager.getInstance(this).canRequestPackageInstalls()) {
-                com.ashu.updater.UpdateManager.getInstance(this).checkForUpdate(true);
+            if (com.vivek.updater.UpdateManager.getInstance(this).canRequestPackageInstalls()) {
+                com.vivek.updater.UpdateManager.getInstance(this).checkForUpdate(true);
             }
         }
     }

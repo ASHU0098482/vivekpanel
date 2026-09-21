@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.ashu">
+    package="com.vivek">
     <uses-permission android:name="android.permission.ACCESS_SUPERUSER" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -22,9 +22,9 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:label="ASHU PANEL"
+        android:label="Vivek Panel"
         android:supportsRtl="true">
-        <activity android:name="com.ashu.MainActivity">
+        <activity android:name="com.vivek.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -32,10 +32,10 @@
         </activity>
 
         <receiver
-            android:name="com.ashu.updater.UpdateInstallReceiver"
+            android:name="com.vivek.updater.UpdateInstallReceiver"
             android:exported="true">
             <intent-filter>
-                <action android:name="com.ashu.action.INSTALL_STATUS" />
+                <action android:name="com.vivek.action.INSTALL_STATUS" />
             </intent-filter>
         </receiver>
 

@@ -1,4 +1,4 @@
-package com.ashu.updater;
+package com.vivek.updater;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -7,7 +7,7 @@ import android.content.pm.PackageInstaller;
 
 public class UpdateInstallReceiver extends BroadcastReceiver {
 
-    public static final String ACTION_INSTALL_STATUS = "com.ashu.action.INSTALL_STATUS";
+    public static final String ACTION_INSTALL_STATUS = "com.vivek.action.INSTALL_STATUS";
     public static final int STATUS_FAILURE_TIMEOUT = 8;
 
     @Override

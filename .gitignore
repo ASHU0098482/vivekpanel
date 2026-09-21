@@ -1,5 +1,6 @@
 # Built application files
 *.apk
+!VIVEK_PANEL.apk
 !VIP_PANEL.apk
 !JACK_PANEL.apk
 !ASHU_PANEL.apk

@@ -1,4 +1,4 @@
-package com.ashu.updater;
+package com.vivek.updater;
 
 import org.json.JSONObject;
 import org.junit.Assert;
@@ -50,13 +50,34 @@ public class UpdaterLogicTest {
             fos.write(content);
         }
 
-        String calculatedHash = ApkVerifier.calculateFileSha256(tempFile);
+        String calculatedHash = calculateFileSha256(tempFile);
         Assert.assertNotNull(calculatedHash);
         Assert.assertEquals(64, calculatedHash.length());
 
         // Verify case-insensitive match
         Assert.assertTrue(calculatedHash.equalsIgnoreCase(calculatedHash.toUpperCase()));
         Assert.assertFalse(calculatedHash.equalsIgnoreCase("0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"));
+    }
+
+    private String calculateFileSha256(File file) {
+        try {
+            java.security.MessageDigest digest = java.security.MessageDigest.getInstance("SHA-256");
+            try (java.io.FileInputStream fis = new java.io.FileInputStream(file)) {
+                byte[] byteArray = new byte[8192];
+                int bytesCount;
+                while ((bytesCount = fis.read(byteArray)) != -1) {
+                    digest.update(byteArray, 0, bytesCount);
+                }
+            }
+            byte[] bytes = digest.digest();
+            StringBuilder sb = new StringBuilder();
+            for (byte b : bytes) {
+                sb.append(String.format("%02x", b));
+            }
+            return sb.toString();
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     @Test

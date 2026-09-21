@@ -7,7 +7,7 @@ class ColorPicker {
 
 public:
     void create(JNIEnv* env, const char* name, jint ID) {
-        jclass CMenu = env->FindClass("com/ashu/Menu");
+        jclass CMenu = env->FindClass("com/vivek/Menu");
         if (!CMenu) return;
         jmethodID MColorPicker = env->GetStaticMethodID(CMenu, "addColorPicker", "(Ljava/lang/String;I)V");
         if (!MColorPicker) return;

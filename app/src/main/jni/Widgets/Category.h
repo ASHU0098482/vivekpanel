@@ -2,7 +2,7 @@ class Category {
 
 public:
     void create(JNIEnv* env, const char* name) {
-        jclass CMenu = env->FindClass("com/ashu/Menu");
+        jclass CMenu = env->FindClass("com/vivek/Menu");
         jmethodID MCategory = env->GetStaticMethodID(CMenu, "addCategory", "(Ljava/lang/String;)V");
         return env->CallStaticVoidMethod(CMenu, MCategory, env->NewStringUTF(name));
     }

@@ -102,7 +102,7 @@ public:
 
     void DrawActivationLoading(const char *brandName, float progress, bool isDone, float alpha) {
         if (isValid()) {
-            jstring jBrand = _env->NewStringUTF(brandName ? brandName : "ASHU PANEL");
+            jstring jBrand = _env->NewStringUTF(brandName ? brandName : "VIVEK PANEL");
             _env->CallVoidMethod(_cvsView,
                                  _env->GetMethodID(_env->GetObjectClass(_cvsView),
                                                    "DrawActivationLoading",

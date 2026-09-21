@@ -1,1 +1,3 @@
+rootProject.projectDir = new File('C:/Users/ashua/Desktop/VIVEKP~1')
 include ':app'
+project(':app').projectDir = new File('C:/Users/ashua/Desktop/VIVEKP~1/app')

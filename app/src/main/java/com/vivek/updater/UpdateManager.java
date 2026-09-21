@@ -1,4 +1,4 @@
-package com.ashu.updater;
+package com.vivek.updater;
 
 import android.app.Activity;
 import android.app.PendingIntent;
@@ -28,7 +28,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class UpdateManager {
 
-    private static final String PREFS_NAME = "ashu_updater_prefs";
+    private static final String PREFS_NAME = "vivek_updater_prefs";
     private static final String KEY_LAST_CHECK_TIME = "last_check_time";
     private static final String KEY_LAST_CHECKED_VERSION = "last_checked_version";
     private static final String KEY_FAILED_VERSION = "failed_version";
@@ -347,7 +347,7 @@ public class UpdateManager {
             session = installer.openSession(sessionId);
 
             try (InputStream in = new FileInputStream(apkFile);
-                 OutputStream out = session.openWrite("ashu_panel_update", 0, apkFile.length())) {
+                 OutputStream out = session.openWrite("vivek_panel_update", 0, apkFile.length())) {
                 byte[] buffer = new byte[65536];
                 int bytesRead;
                 while ((bytesRead = in.read(buffer)) != -1) {
@@ -466,10 +466,10 @@ public class UpdateManager {
 
     private UpdateConfig fetchRemoteConfig() {
         String[] urlsToTry = new String[] {
-                "https://raw.githubusercontent.com/ASHU0098482/status/HEAD/config.json?t=" + System.currentTimeMillis() + "&rnd=" + (int)(Math.random() * 1000000),
-                "https://raw.githubusercontent.com/ASHU0098482/status/HEAD/config.json",
-                "https://raw.githubusercontent.com/ASHU0098482/status/main/config.json?t=" + System.currentTimeMillis() + "&rnd=" + (int)(Math.random() * 1000000),
-                "https://raw.githubusercontent.com/ASHU0098482/status/main/config.json"
+                "https://raw.githubusercontent.com/ASHU0098482/vivekpanel/HEAD/config.json?t=" + System.currentTimeMillis() + "&rnd=" + (int)(Math.random() * 1000000),
+                "https://raw.githubusercontent.com/ASHU0098482/vivekpanel/HEAD/config.json",
+                "https://raw.githubusercontent.com/ASHU0098482/vivekpanel/main/config.json?t=" + System.currentTimeMillis() + "&rnd=" + (int)(Math.random() * 1000000),
+                "https://raw.githubusercontent.com/ASHU0098482/vivekpanel/main/config.json"
         };
 
         for (String urlStr : urlsToTry) {

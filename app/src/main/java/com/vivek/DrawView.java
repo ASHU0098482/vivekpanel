@@ -1,4 +1,4 @@
-package com.ashu;
+package com.vivek;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -227,7 +227,7 @@ public class DrawView extends View implements Runnable {
         float lineHalfWidth = Math.min(W * 0.42f, 650.0f);
         cvs.drawLine(cx - lineHalfWidth, cy - (H * 0.22f), cx + lineHalfWidth, cy - (H * 0.22f), glowLinePaint);
 
-        // 2. Huge Full-Screen Brand Title (e.g. ASHU PANEL)
+        // 2. Huge Full-Screen Brand Title (e.g. VIVEK PANEL)
         String brand = (brandName != null && !brandName.isEmpty()) ? brandName : Menu.getBrandName();
         float brandSize = Math.max(72.0f, H * 0.13f);
         mAnimBrandPaint.setTextSize(brandSize);

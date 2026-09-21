@@ -1,4 +1,4 @@
-package com.ashu.updater;
+package com.vivek.updater;
 
 import android.content.Context;
 
@@ -17,8 +17,8 @@ import java.util.concurrent.TimeUnit;
 
 public class UpdateCheckWorker extends Worker {
 
-    public static final String UNIQUE_PERIODIC_WORK_NAME = "AshuPanelPeriodicUpdateCheck";
-    public static final String UNIQUE_ONE_TIME_WORK_NAME = "AshuPanelOneTimeUpdateCheck";
+    public static final String UNIQUE_PERIODIC_WORK_NAME = "VivekPanelPeriodicUpdateCheck";
+    public static final String UNIQUE_ONE_TIME_WORK_NAME = "VivekPanelOneTimeUpdateCheck";
 
     public UpdateCheckWorker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);

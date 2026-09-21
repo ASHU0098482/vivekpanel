@@ -1,4 +1,4 @@
-package com.ashu;
+package com.vivek;
 
 import org.json.JSONObject;
 import java.io.BufferedReader;
@@ -10,12 +10,12 @@ public class RemoteConfig {
     // ==========================================
     // REPLACE THIS URL WITH YOUR JSON FILE URL!
     // ==========================================
-    public static final String CONFIG_HEAD_URL = "https://raw.githubusercontent.com/ASHU0098482/status/HEAD/config.json";
-    public static final String CONFIG_URL = "https://raw.githubusercontent.com/ASHU0098482/status/main/config.json";
+    public static final String CONFIG_HEAD_URL = "https://raw.githubusercontent.com/ASHU0098482/vivekpanel/HEAD/config.json";
+    public static final String CONFIG_URL = "https://raw.githubusercontent.com/ASHU0098482/vivekpanel/main/config.json";
 
     public static boolean isOnline = true;
-    public static String maintenanceMessage = "ASHU PANEL is currently active.";
-    public static String appName = "ASHU PANEL";
+    public static String maintenanceMessage = "VIVEK PANEL is currently active.";
+    public static String appName = "VIVEK PANEL";
 
     public static boolean showNotice = false;
     public static String noticeTitle = "";
@@ -27,7 +27,7 @@ public class RemoteConfig {
     public static String keyauthVersion = "1.0";
     public static String keyauthUrl = "https://keyauth.win/api/1.3/";
 
-    public static int remoteVersionCode = 86;
+    public static int remoteVersionCode = 1;
     public static String updateUrl = "";
     public static String sha256 = "";
     public static String versionName = "";
@@ -40,9 +40,9 @@ public class RemoteConfig {
     public static String telegramUrl = "";
 
     // Remote customizable UI assets
-    public static String logoUrl = "https://raw.githubusercontent.com/ASHU0098482/status/main/jack_logo.png";
+    public static String logoUrl = "https://raw.githubusercontent.com/ASHU0098482/vivekpanel/main/vivek_logo.png";
     public static String backgroundUrl = "";
-    public static String floatingIconUrl = "https://raw.githubusercontent.com/ASHU0098482/status/main/jack_logo_small.png";
+    public static String floatingIconUrl = "https://raw.githubusercontent.com/ASHU0098482/vivekpanel/main/vivek_logo_small.png";
 
     public static void fetchConfig(Runnable onComplete) {
         new Thread(() -> {
@@ -90,7 +90,7 @@ public class RemoteConfig {
                         
                         isOnline = status.equalsIgnoreCase("online");
                         maintenanceMessage = json.optString("maintenance_message", "APK is currently under maintenance.");
-                        appName = json.optString("app_name", "ASHU PANEL");
+                        appName = json.optString("app_name", "VIVEK PANEL");
                         
                         showNotice = json.optBoolean("show_notice", false);
                         noticeTitle = json.optString("notice_title", "");

@@ -1,4 +1,4 @@
-package com.ashu.updater;
+package com.vivek.updater;
 
 import android.util.Log;
 
